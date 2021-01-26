@@ -29,9 +29,20 @@ window.onload = async function main() {
          liff.login()
        }
    }
-   main()
+
 const xurl = "https://script.google.com/macros/s/AKfycbxnBzP-Fj7h2Mqr_StYrmfTJUwabPPn4ox8EMGHon5avncSV52nnyqWhQ/exec";
 
+function initializeLiff(myLiffId) {
+    liff
+        .init({
+            liffId: myLiffId
+        })
+        .then(() => {
+            checks();
+        })
+        .catch((err) => {
+        });
+}
 
 
 var x = document.getElementById("demo");
