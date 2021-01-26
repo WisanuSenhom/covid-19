@@ -22,7 +22,7 @@
 
 <script>
 window.onload = async function main() {
-     await liff.init({ liffId: "1654797991-nolGabGZ" })
+     await liff.init({ liffId: "1654797991-lWV0KJ0Z" })
        if (liff.isLoggedIn()) {
          getUserProfile()
        } else {
@@ -66,8 +66,8 @@ var xmlhttp = new XMLHttpRequest();
             var jsonResponse = JSON.parse(this.responseText);
         }
         alert(jsonResponse.desc);
-              window.location.replace("https://bkn.hdc.moph.go.th/hdc/main/index_pk.php");
         liff.closeWindow();
+        window.location.replace("https://bkn.hdc.moph.go.th/hdc/main/index_pk.php");
         
       }});  
 }
