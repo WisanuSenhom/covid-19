@@ -75,8 +75,9 @@ var xmlhttp = new XMLHttpRequest();
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
         }
-        window.location.replace("https://bkn.hdc.moph.go.th/hdc/main/index_pk.php");
+        alert(jsonResponse.desc);
         liff.closeWindow();
+        window.location.replace("https://bkn.hdc.moph.go.th/hdc/main/index_pk.php");
                 
       }});  
 }
