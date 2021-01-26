@@ -21,7 +21,7 @@
 </center>
 
 <script>
-window.onload = function() {
+window.onload = async function() {
   await liff.init({ liffId: "1654797991-nolGabGZ" })
        if (liff.isLoggedIn()) {
          getUserProfile()
@@ -29,7 +29,7 @@ window.onload = function() {
          liff.login()
        }
 }
-
+   main()
 const xurl = "https://script.google.com/macros/s/AKfycbzLxEvB6tq3ymW89ygr7ss_3Nbd5s0Lo7fDJauJ32-dIcr3Hjny/exec";
 
 
