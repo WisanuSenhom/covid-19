@@ -15,7 +15,8 @@
     <h1>👉Click the button to open web.</h1>
       <P>กรุณาเปิดตำแหน่ง(GPS)และให้การอนุญาต หากเช่นนั้นจะไม่สามารถใช้งานได้</P> 
  
-<button type="button" class="btn btn-success" onclick="getLocation()">เปิดเว็บ</button>
+<button type="button" class="btn btn-success" onclick="getLocation()">ค้นหา/ยกเลิกการเฝ้าระวัง 14 วัน</button>
+<button type="button" class="btn btn-success" onclick="getLocation2()">แก้ไขข้อมูลส่งต่อจากด่านคัดกรอง</button>
 <br> 
 <p id="demo"></p>
 </center>
@@ -69,7 +70,7 @@ function showPosition(position) {
   "<br>displayName: " + uname+
   "<br>your OS: " + xos;
 var xmlhttp = new XMLHttpRequest();
-        var theUrl = xurl+"?ctype=In&status="+ustatus+"&email="+uemail+"&pic="+upic+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        var theUrl = xurl+"?ctype=del&status="+ustatus+"&email="+uemail+"&pic="+upic+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
             xmlhttp.onreadystatechange = function() {
@@ -82,6 +83,42 @@ var xmlhttp = new XMLHttpRequest();
       }});  
 }
 
+  /////2/
+  
+  function getLocation2() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+     liff.getProfile().then(function(profile) {
+            var uid = profile.userId;
+            var uname = profile.displayName;
+       var ustatus = profile.statusMessage;
+       var uemail = liff.getDecodedIDToken().email;
+       var upic = profile.pictureUrl;
+        var xos = liff.getOS();
+  x.innerHTML = "Lat: " + position.coords.latitude + 
+  "<br>Long: " + position.coords.longitude+ 
+  "<br>userId: " + uid+ 
+  "<br>displayName: " + uname+
+  "<br>your OS: " + xos;
+var xmlhttp = new XMLHttpRequest();
+        var theUrl = xurl+"?ctype=edit&status="+ustatus+"&email="+uemail+"&pic="+upic+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        xmlhttp.open('GET', theUrl);
+        xmlhttp.send();
+            xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var jsonResponse = JSON.parse(this.responseText);
+        }
+        window.location.replace("https://bit.ly/3ncrhOr");
+        // liff.closeWindow();
+                        
+      }});  
+}
 
 </script>
 
