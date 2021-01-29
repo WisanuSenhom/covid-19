@@ -89,13 +89,13 @@ var xmlhttp = new XMLHttpRequest();
   
   function getLocation2() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
+    navigator.geolocation.getCurrentPosition(showPosition2);
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
 
-function showPosition(position) {
+function showPosition2(position) {
      liff.getProfile().then(function(profile) {
             var uid = profile.userId;
             var uname = profile.displayName;
